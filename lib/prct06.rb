@@ -1,7 +1,7 @@
 #require "prct06/version"
 
 module Prct06
-  class Error < StandardError; end
+	class Error < StandardError; end
 end
 
 class Nutri
@@ -10,48 +10,46 @@ class Nutri
 	def initialize(name, fat, sfats, hydrates, sugar, protein, salt)
 		@name, @fat, @sfats, @hydrates, @sugar, @protein, @salt = name, fat, sfats, hydrates, sugar, protein, salt
 	end
-	
+
 	def sname
 		"#{@name}"
-		end
+	end
 	def sfat
 		"#{@fat}"
-		end
+	end
 	def ssfats
 		"#{@sfats}"
-		end
+	end
 	def shydrates
 		"#{@hydrates}"
-		end
+	end
 	def ssugar
 		"#{@sugar}"
-		end
+	end
 	def sprotein
 		"#{@protein}"
-		end
+	end
 	def ssalt
 		"#{@salt}"
-		end
+	end
 
 	def label
 		return "Name: \t\t#{@name}\nfat: \t\t#{@fat}\nsat.fats: \t#{@sfats}\nhydrates: \t#{@hydrates}\nsugar: \t\t#{@sugar}\nprotein: \t#{@protein}\nsalt: \t\t#{@salt}\n"
 	end
 	def energy
 		v1 = [@fat, @hydrates, @protein, @salt]
-      		v2 = [37, 17, 17, 25]#Conversion en kJ/g
-      		v3 = [9, 4, 4, 6]#Conversion en kcal/g
+		v2 = [37, 17, 17, 25]
+		v3 = [9, 4, 4, 6]
 
-        	s1 = 0
-        	s2 = 0
-        	i = 0
-        	while (i < v1.length)
-            		s1 += v1[i] * v2[i]
-            		s2 += v1[i] * v3[i]
-            		i += 1
+		s1 = 0
+		s2 = 0
+		i = 0
+		while (i < v1.length)
+			s1 += v1[i] * v2[i]
+			s2 += v1[i] * v3[i]
+			i += 1
 		end
-		return "#{s1.round(2)} kJ/g y #{s2.round(2)} kcal/g\n"
+		return "#{s1.round(2)} kJ/g / #{s2.round(2)} kcal/g\n"
 	end
 end
 
-a = Nutri.new("servus", 2,3,4,5,6,7)
-a.label
