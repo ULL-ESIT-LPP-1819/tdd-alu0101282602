@@ -82,8 +82,8 @@ RSpec.describe Prct06 do
 		  expect(@test2.ssalt).to eq("30")
 	  end
 	  it "Existe un método para obtener la etiqueta formateada." do
-		  expect(@test1.label).to eq("Name: \t\tSalad\nfat: \t\t5\nsat.fats: \t15\nhydrates: \t34\nsugar: \t\t45\nprotein: \t67\nsalt: \t\t3\n")
-		  expect(@test2.label).to eq("Name: \t\tCoke\nfat: \t\t500\nsat.fats: \t150\nhydrates: \t4\nsugar: \t\t25\nprotein: \t45\nsalt: \t\t30\n")
+		  expect(@test1.to_s).to eq("Name: \t\tSalad\nfat: \t\t5\nsat.fats: \t15\nhydrates: \t34\nsugar: \t\t45\nprotein: \t67\nsalt: \t\t3\n")
+		  expect(@test2.to_s).to eq("Name: \t\tCoke\nfat: \t\t500\nsat.fats: \t150\nhydrates: \t4\nsugar: \t\t25\nprotein: \t45\nsalt: \t\t30\n")
 	  end
   end
 end

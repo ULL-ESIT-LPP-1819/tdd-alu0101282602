@@ -33,7 +33,7 @@ class Nutri
 		"#{@salt}"
 	end
 
-	def label
+	def to_s
 		return "Name: \t\t#{@name}\nfat: \t\t#{@fat}\nsat.fats: \t#{@sfats}\nhydrates: \t#{@hydrates}\nsugar: \t\t#{@sugar}\nprotein: \t#{@protein}\nsalt: \t\t#{@salt}\n"
 	end
 	def energy
