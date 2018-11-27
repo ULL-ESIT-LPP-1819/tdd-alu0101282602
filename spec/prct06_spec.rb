@@ -234,7 +234,9 @@ RSpec.describe Prct06 do
 				b = Nutri.new("1name", 12,13,14,15,16,17)
 				expect(a==(b)).to eq(false)
 				expect(a<(b)).to eq(false)
-				expect(a>(b)).to eq(false)
+				expect(a>(b)).to eq(true)
+				expect(a<=(b)).to eq(false)
+				expect(a>=(b)).to eq(true)
 			end
 		end
 	end
