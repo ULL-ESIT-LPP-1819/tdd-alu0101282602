@@ -230,14 +230,20 @@ RSpec.describe Prct06 do
 		end
 		describe "Comparable" do
 			it "The basic comparable functions have to work. Nobody knew what we have to compare exactly so I'm comparing the names" do
-				a = Nutri.new("name", 2,3,4,5,6,7)
-				b = Nutri.new("1name", 12,13,14,15,16,17)
-				expect(a==(b)).to eq(false)
-				expect(a<(b)).to eq(false)
-				expect(a>(b)).to eq(true)
-				expect(a<=(b)).to eq(false)
-				expect(a>=(b)).to eq(true)
+				expect(@test1==(@test2)).to eq(false)
+				expect(@test1<(@test2)).to eq(false)
+				expect(@test1>(@test)).to eq(true)
+				expect(@test1<=(@test2)).to eq(false)
+				expect(@test1>=(@test2)).to eq(true)
 			end
+
+			it "The basic comparable functions have to work with different objects as well. Nobody knew what we have to compare exactly so I'm comparing the names" do
+                                expect(@test1==(@julian)).to eq(false)
+                                expect(@test1<(@julian)).to eq(false)
+                                expect(@test1>(@julian)).to eq(true)
+                                expect(@test1<=(@julian)).to eq(false)
+                                expect(@test1>=(@julian)).to eq(true)
+
 		end
 	end
 end

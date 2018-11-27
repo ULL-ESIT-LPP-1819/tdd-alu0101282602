@@ -56,7 +56,3 @@ class Nutri
 		return "#{s1.round(2)} kJ/g / #{s2.round(2)} kcal/g\n"
 	end
 end
-
-a = Nutri.new("name", 2,3,4,5,6,7)
-b = Nutri.new("1name", 12,13,14,15,16,17)
-puts a==(b)
