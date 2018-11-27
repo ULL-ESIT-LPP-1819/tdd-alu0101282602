@@ -228,6 +228,15 @@ RSpec.describe Prct06 do
 				expect(@list.tail.value.salt).to eq(30)
 			end
 		end
+		describe "Comparable" do
+			it "The basic comparable functions have to work. Nobody knew what we have to compare exactly so I'm comparing the names" do
+				a = Nutri.new("name", 2,3,4,5,6,7)
+				b = Nutri.new("1name", 12,13,14,15,16,17)
+				expect(a==(b)).to eq(false)
+				expect(a<(b)).to eq(false)
+				expect(a>(b)).to eq(false)
+			end
+		end
 	end
 end
 
