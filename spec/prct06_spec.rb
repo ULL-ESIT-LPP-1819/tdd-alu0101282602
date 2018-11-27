@@ -232,7 +232,7 @@ RSpec.describe Prct06 do
 			it "The basic comparable functions have to work. Nobody knew what we have to compare exactly so I'm comparing the names" do
 				expect(@test1==(@test2)).to eq(false)
 				expect(@test1<(@test2)).to eq(false)
-				expect(@test1>(@test)).to eq(true)
+				expect(@test1>(@test2)).to eq(true)
 				expect(@test1<=(@test2)).to eq(false)
 				expect(@test1>=(@test2)).to eq(true)
 			end
@@ -243,7 +243,7 @@ RSpec.describe Prct06 do
                                 expect(@test1>(@julian)).to eq(true)
                                 expect(@test1<=(@julian)).to eq(false)
                                 expect(@test1>=(@julian)).to eq(true)
-
+			end
 		end
 	end
 end

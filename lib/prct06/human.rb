@@ -1,6 +1,13 @@
 class Human
+	include Comparable
+
 	#getter and setter
 	attr_accessor :name, :surname, :sex, :age
+
+	def <=>(other)
+		@name <=> other.name
+	end
+
 
 	def initialize(name, surname, sex, age)
 		@name, @surname, @sex, @age = name, surname, sex, age
