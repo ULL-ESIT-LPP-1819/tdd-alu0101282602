@@ -1,3 +1,7 @@
+# 
+# Contains all the tests
+# 
+# @author [roro]
 RSpec.describe Prct06 do
 	it "has a version number" do
 		expect(Prct06::VERSION).not_to be nil
@@ -209,6 +213,7 @@ RSpec.describe Prct06 do
 				expect(@list.head.value.imc).to eq(20.22)
 				expect(@list.tail.value.imc).to eq(19.39)
 
+
 				expect(@list.pop()).to eq("Julian Herrdum")
 				expect(@list.size).to eq(4)
 				@list.pop()
@@ -238,13 +243,59 @@ RSpec.describe Prct06 do
 			end
 
 			it "The basic comparable functions have to work with different objects as well. Nobody knew what we have to compare exactly so I'm comparing the names" do
-                                expect(@test1==(@julian)).to eq(false)
-                                expect(@test1<(@julian)).to eq(false)
-                                expect(@test1>(@julian)).to eq(true)
-                                expect(@test1<=(@julian)).to eq(false)
-                                expect(@test1>=(@julian)).to eq(true)
+				expect(@test1==(@julian)).to eq(false)
+				expect(@test1<(@julian)).to eq(false)
+				expect(@test1>(@julian)).to eq(true)
+				expect(@test1<=(@julian)).to eq(false)
+				expect(@test1>=(@julian)).to eq(true)
 			end
+
+			it "The basic comparable functions have to work with two objects of the type Human/Anthropo... as well. Nobody knew what we have to compare exactly so I'm comparing the names" do
+				expect(@rob==(@julian)).to eq(false)
+				expect(@rob<(@julian)).to eq(false)
+				expect(@rob>(@julian)).to eq(true)
+				expect(@rob<=(@julian)).to eq(false)
+				expect(@rob>=(@julian)).to eq(true)
+			end
+
+			it "Lists wor correctly with enumerable max, min, sort and the collect funtion" do
+
+				@list.push(@test1)
+				@list.push(@test2)
+				expect(@list.all? {|x|  x.fat <= 500}).to eq(true)
+				expect(@list.max().fat).to eq(5) 
+				expect(@list.min().fat).to eq(500) 
+				# sort
+				expect(((@list.sort())[0]).fat).to eq(500)
+				expect(((@list.sort())[1]).fat).to eq(5)
+				#select
+				expect(((@list.select { |e| e.fat > 400 })[0]).fat).to eq(500)
+				#collect
+				expect(@list.collect{"puff"}).to eq(["puff", "puff"]) 
+
+			end
+
+
+			it "Same things should work with Anthrophometic" do
+				@list.push(@rob)
+				@list.push(@julian)
+				@list.push(@dummy1)
+				@list.push(@dummy2)
+				@list.push(@dummy3)
+
+				expect(@list.all?  { |x| x.age <= 32}).to eq(true)
+				# min max
+				expect(@list.max().age).to eq(23)
+				expect(@list.min().age).to eq(23) 
+				# sort
+				expect(((@list.sort())[0]).age).to eq(23)
+				expect(((@list.sort())[1]).age).to eq(30)
+				#collect
+				expect(@list.collect{"puff"}).to eq(["puff", "puff", "puff", "puff","puff"]) 
+			end
+
+
+
 		end
 	end
 end
-
