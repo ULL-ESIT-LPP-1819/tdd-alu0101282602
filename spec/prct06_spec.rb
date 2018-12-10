@@ -12,19 +12,31 @@ RSpec.describe Prct06 do
 	end
 
 	before :each do
+		# Nutri
 		# name, fat, saturated fats, hydrates, sugar, protein, salt
 		@test1 = Nutri.new("Salad", 5, 15, 34, 45, 67, 3)
-		@test2 = Nutri.new("Coke", 500, 150, 4, 25, 45, 30)
+                @test2 = Nutri.new("Coke", 500, 150, 4, 25, 45, 30)
+		@test3 = Nutri.new("Pizza", 5000, 1500, 40, 250, 45, 20)
+		@test4 = Nutri.new("Burger", 2500, 1500, 340, 450, 67, 30)
+		@test5 = Nutri.new("Arepa", 6000, 3000, 4, 250, 400, 40)
+		
+		# List
 		@list = Liste.new()
 
 		# Human
 		@rob = Anthropometric.new("Robin", "Steiger", 1, 23, 1.9, 73, [0.5, 0.7], [0.4, 0.8], [0.4, 0.5, 0.6], [0.9, 0.7, 0.5], [0.5, 0.6, 0.8], [0.9, 0.8, 0.5], [0.5, 0.9])
 		@julian = Anthropometric.new("Julian", "Herrdum", 1, 30, 1.9, 70, [0.3, 0.5], [0.8, 0.4], [0.2, 0.4, 0.8], [0.9, 0.5, 0.1], [0.2, 0.6, 0.5], [0.4, 0.5, 0.6], [0.9, 0.8])
-		@dummy1 = Anthropometric.new("Dummy1", "One", 1, 23, 1.9, 73, [0.5, 0.7], [0.4, 0.8], [0.4, 0.5, 0.6], [0.9, 0.7, 0.5], [0.5, 0.6, 0.8], [0.9, 0.8, 0.5], [0.5, 0.9])
-		@dummy2 = Anthropometric.new("Dummy2", "Two", 1, 30, 1.9, 70, [0.3, 0.5], [0.8, 0.4], [0.2, 0.4, 0.8], [0.9, 0.5, 0.1], [0.2, 0.6, 0.5], [0.4, 0.5, 0.6], [0.9, 0.8])
-		@dummy3 = Anthropometric.new("Dummy3", "Three", 1, 30, 1.9, 70, [0.3, 0.5], [0.8, 0.4], [0.2, 0.4, 0.8], [0.9, 0.5, 0.1], [0.2, 0.6, 0.5], [0.4, 0.5, 0.6], [0.9, 0.8])
+		@dummy1 = Anthropometric.new("Dummy1", "One", 1, 23, 1.4, 80, [0.5, 0.7], [0.4, 0.8], [0.4, 0.5, 0.6], [0.9, 0.7, 0.5], [0.5, 0.6, 0.8], [0.9, 0.8, 0.5], [0.5, 0.9])
+		@dummy2 = Anthropometric.new("Dummy2", "Two", 0, 30, 1.7, 120, [0.3, 0.5], [0.8, 0.4], [0.2, 0.4, 0.8], [0.9, 0.5, 0.1], [0.2, 0.6, 0.5], [0.4, 0.5, 0.6], [0.9, 0.8])
+		@dummy3 = Anthropometric.new("Dummy3", "Three", 1, 40, 1.9, 50, [0.3, 0.5], [0.8, 0.4], [0.2, 0.4, 0.8], [0.9, 0.5, 0.1], [0.2, 0.6, 0.5], [0.4, 0.5, 0.6], [0.9, 0.8])
 
-
+		# Diet
+		@diet_rob = Diet.new(@rob)
+		@diet_julian = Diet.new(@julian)
+		@diet1 = Diet.new(@dummy1)
+		@diet2 = Diet.new(@dummy2)
+		@diet3 = Diet.new(@dummy3)
+		@diets = [@diet_rob, @diet_julian, @diet1, @diet2, @diet3]
 	end
 
 	describe "Nutri" do
@@ -67,8 +79,8 @@ RSpec.describe Prct06 do
 				expect(@test2.sname).to eq("Coke")
 			end
 			it "Existe un método para obtener el valor energético." do
-				expect(@test1.energy).to eq("1977 kJ/g / 467 kcal/g\n")
-				expect(@test2.energy).to eq("20083 kJ/g / 4876 kcal/g\n")
+				expect(@test1.senergy).to eq("1977 kJ/g / 467 kcal/g\n")
+				expect(@test2.senergy).to eq("20083 kJ/g / 4876 kcal/g\n")
 			end
 			it "Existe un método para obtener la cantidad de grasas." do
 				expect(@test1.sfat).to eq("5")
@@ -283,7 +295,8 @@ RSpec.describe Prct06 do
 				@list.push(@dummy2)
 				@list.push(@dummy3)
 
-				expect(@list.all?  { |x| x.age <= 32}).to eq(true)
+				expect(@list.all?  { |x| x.age <= 32}).to eq(false)
+				expect(@list.all?  { |x| x.age <= 40}).to eq(true)
 				# min max
 				expect(@list.max().age).to eq(23)
 				expect(@list.min().age).to eq(23) 
@@ -293,9 +306,22 @@ RSpec.describe Prct06 do
 				#collect
 				expect(@list.collect{"puff"}).to eq(["puff", "puff", "puff", "puff","puff"]) 
 			end
+		end
 
-
-
+	end
+	describe "Diet" do
+		it "If no one has eaten nothing, there always has to be to less energy" do
+			@diets.each { |x| expect(x.food_energy < x.gasto_energetico_total).to eq(true)}
+			end
+		it "if they have eaten too much, nthere has to be too much energy" do
+			@diets.each do |i|
+				i.eat(@test1)
+				i.eat(@test2)
+				i.eat(@test3)
+				i.eat(@test4)
+				i.eat(@test5)
+			end
+			@diets.each { |x| expect(x.food_energy < x.gasto_energetico_total).to eq(true)}
 		end
 	end
 end

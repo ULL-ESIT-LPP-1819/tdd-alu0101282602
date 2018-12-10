@@ -10,7 +10,7 @@ class Nutri
 	# @author NotME
 	include Comparable
 
-	attr_reader :name, :fat, :sfats, :hydrates, :sugar, :protein, :salt
+	attr_reader :name, :fat, :sfats, :hydrates, :sugar, :protein, :salt, :energy
 
 
 	#
@@ -36,6 +36,8 @@ class Nutri
 	# @return [nil] [there is nothing to return]
 	def initialize(name, fat, sfats, hydrates, sugar, protein, salt)
 		@name, @fat, @sfats, @hydrates, @sugar, @protein, @salt = name, fat, sfats, hydrates, sugar, protein, salt
+		@energy = 0.0
+		senergy()
 	end
 
 	# 
@@ -106,7 +108,7 @@ class Nutri
 	# Prints the calculated energy as a string.
 	# 
 	# @return [string] [Energy as a string]
-	def energy
+	def senergy
 		v1 = [@fat, @hydrates, @protein, @salt]
 		v2 = [37, 17, 17, 25]
 		v3 = [9, 4, 4, 6]
@@ -119,6 +121,7 @@ class Nutri
 			s2 += v1[i] * v3[i]
 			i += 1
 		end
+		@energy = s2
 		return "#{s1.round(2)} kJ/g / #{s2.round(2)} kcal/g\n"
 	end
 end
