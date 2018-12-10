@@ -321,7 +321,7 @@ RSpec.describe Prct06 do
 				i.eat(@test4)
 				i.eat(@test5)
 			end
-			@diets.each { |x| expect(x.food_energy < x.gasto_energetico_total).to eq(true)}
+			@diets.each { |x| expect(x.food_energy < x.gasto_energetico_total).to eq(false)}
 		end
 	end
 end
