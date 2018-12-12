@@ -12,6 +12,7 @@ class Nutri
 
 	attr_reader :name, :fat, :sfats, :hydrates, :sugar, :protein, :salt, :energy
 
+
 	#
 	# Defines wich value should be compared
 	# @param other [object] [another object]
