@@ -316,7 +316,7 @@ RSpec.describe Prct06 do
 		it "If no one has eaten nothing, there always has to be to less energy" do
 			@diets.each { |x| expect(x.food_energy < x.gasto_energetico_total).to eq(true)}
 			end
-		it "if they have eaten too much, nthere has to be too much energy" do
+		it "if they have eaten too much, there has to be too much energy" do
 			@diets.each do |i|
 				i.eat(@test1)
 				i.eat(@test2)
