@@ -68,7 +68,22 @@ class Liste
 		end
 		return a.to_s
 	end
-
+        
+	def popb()
+                if size > 0
+                        a = @head.value
+                        @size -= 1
+                        @head = @head.next
+                        if size > 0
+                                @head.prev = nil
+                        else
+                                @head = nil
+                        end
+                else
+                        puts "No elements"
+                end
+                return a.to_s
+        end
 =begin	def popi(i)
 		act = @head
 		if i+1
