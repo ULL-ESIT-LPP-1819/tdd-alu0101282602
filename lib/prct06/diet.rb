@@ -36,8 +36,8 @@ class Diet
         # @param item [Nutri] [Food Item which was eaten]
         #
         # @return nil [Returns Nothing]
-	def eat(item)
-		@food.push(item)
+	def eat(it)
+		@food.push(it)
 		@food_energy = @food.reduce(0) { |sum, obj| sum + obj.energy }
 	end
 	
