@@ -48,6 +48,18 @@ class Liste
 		@size += 1
 		return a.value.to_s
 	end
+	
+	def pushb(obj)
+		a = Node.new(obj, @head, nil)
+		if size > 0
+			@head.prev = a
+		else
+			@tail = a
+		end
+		@head = a
+		@size += 1
+		return a.value.to_s
+	end
 
 	# 
 	# Pops the last Element of the list and prints it via the to_s method.
@@ -85,18 +97,38 @@ class Liste
 		return a.to_s
 	end
 
+	def pushn(ar)
+		ar.each do |i|
+            push(i)
+        end
+	end
+	def pushbn(ar)
+		ar.each do |i|
+            pushb(i)
+        end
+	end
+	def popn(i)
+		while @size > 0 && i > 0 do
+			pop()
+		end
+	end
+	def popbn(i)
+		while @size > 0 && i > 0 do
+			popb()
+		end
+	end
+
 	# Tarea 3 - for
 	def fors
 		sorted = [@head.value]
-		aux = @head
-		sz = @size
-		for i in (1...sz)
-			aux = aux.next
+		act = @head
+		for i in (1...@size)
+			act = act.next
 			for j in (0..sorted.size)
 				if (j == sorted.size)
-					sorted.push(aux.value)
-				elsif (aux.value < sorted[j])
-					sorted.insert(j, aux.value)
+					sorted.push(act.value)
+				elsif (act.value < sorted[j])
+					sorted.insert(j, act.value)
 					break
 				end
 			end
@@ -128,16 +160,5 @@ class Liste
 		return sorted
 	end
 
-=begin	def popi(i)
-		act = @head
-		if i+1
-		while i > 0
-			act = act.next
-			i += 1
-		end
 
-		act.prev.next = act.next
-		act.next.prev = act.next
-		end
-=end
 end

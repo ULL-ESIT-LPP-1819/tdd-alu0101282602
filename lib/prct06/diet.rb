@@ -8,6 +8,7 @@ class Diet
 
 	#getter and setter
 	attr_accessor :food_energy, :gasto_energetico_total
+	include Comparable
 
         #
         # Initialize
@@ -78,6 +79,11 @@ class Diet
 			puts "Ha consumido demasiado calóricas. No mantiene el equilibrio de su balance.\nTomaste #{difference.round(2)}kcal/g demasiado."
 		else puts "Strange ERROR"
 		end
+	end
+
+	def <=> (other)
+		return nil unless other.is_a?Diet
+		gasto_energetico_total <=> other.gasto_energetico_total
 	end
 
 end
