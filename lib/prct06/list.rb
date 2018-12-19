@@ -6,14 +6,14 @@
 #
 class Liste
 	include Enumerable
-	
+
 	Node = Struct.new(:value, :next, :prev)
 	attr_reader :size, :head, :tail
 
 	#
-  	# Initialize
-  	# Initializes all to nil
-  	# @return [nil] [nothing]
+	# Initialize
+	# Initializes all to nil
+	# @return [nil] [nothing]
 	def initialize()
 		@head = nil
 		@tail = nil
@@ -68,22 +68,66 @@ class Liste
 		end
 		return a.to_s
 	end
-        
+
 	def popb()
-                if size > 0
-                        a = @head.value
-                        @size -= 1
-                        @head = @head.next
-                        if size > 0
-                                @head.prev = nil
-                        else
-                                @head = nil
-                        end
-                else
-                        puts "No elements"
-                end
-                return a.to_s
-        end
+		if size > 0
+			a = @head.value
+			@size -= 1
+			@head = @head.next
+			if size > 0
+				@head.prev = nil
+			else
+				@head = nil
+			end
+		else
+			puts "No elements"
+		end
+		return a.to_s
+	end
+
+	# Tarea 3 - for
+	def fors
+		sorted = [@head.value]
+		aux = @head
+		sz = @size
+		for i in (1...sz)
+			aux = aux.next
+			for j in (0..sorted.size)
+				if (j == sorted.size)
+					sorted.push(aux.value)
+				elsif (aux.value < sorted[j])
+					sorted.insert(j, aux.value)
+					break
+				end
+			end
+		end
+		return sorted
+	end
+
+	# Tarea 4 - each
+	def eachs
+		sorted = [@head.value]
+		self.each_with_index do |x, pos_x|
+			if (pos_x != 0)
+				sorted.each_with_index do |y, pos_y|
+					if (pos_y == sorted.size - 1)
+						if (x < y)
+							sorted.insert(pos_y, x)
+							break
+						else
+							sorted.push(x)
+							break
+						end
+					elsif (x < y)
+						sorted.insert(pos_y, x)
+						break
+					end
+				end
+			end
+		end
+		return sorted
+	end
+
 =begin	def popi(i)
 		act = @head
 		if i+1

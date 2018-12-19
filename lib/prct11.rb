@@ -1,8 +1,19 @@
+# require "prct06/list"
+# require "prct06/array"
+# require "prct06/human"
+require "prct06/diet"
+
+
 @test1 = Nutri.new("Salad", 5, 15, 34, 45, 67, 3)
 @test2 = Nutri.new("Coke", 500, 150, 4, 25, 45, 30)
 @test3 = Nutri.new("Pizza", 5000, 1500, 40, 250, 45, 20)
 @test4 = Nutri.new("Burger", 2500, 1500, 340, 450, 67, 30)
 @test5 = Nutri.new("Arepa", 6000, 3000, 4, 250, 400, 40)
+@test6 = Nutri.new("Salada", 25, 215, 234, 245, 267, 23)
+@test7 = Nutri.new("Coke_cero", 5300, 3150, 34, 325, 345, 330)
+@test8 = Nutri.new("Pizza-Burger", 4500, 4500, 440, 4250, 445, 40)
+@test9 = Nutri.new("Ham-Burger", 2507, 157, 347, 457, 677, 307)
+@test10 = Nutri.new("Abacaxi", 680, 3800, 48, 850, 480, 48)
 
 # Human
 @rob = Anthropometric.new("Robin", "Steiger", 1, 23, 1.9, 73, [0.5, 0.7], [0.4, 0.8], [0.4, 0.5, 0.6], [0.9, 0.7, 0.5], [0.5, 0.6, 0.8], [0.9, 0.8, 0.5], [0.5, 0.9])
@@ -31,8 +42,7 @@
 
 # Tarea 1 con Array
 def tarea1()
-	diets = [@diet_rob, @diet_julian, @diet1, @diet2, @diet3, @diet4, @diet5, @diet6, @diet7, @diet8]
-	return diets
+	return [@test1, @test2, @test3, @test4, @test5, @test6, @test7, @test8, @test9, @test10]
 end
 
 # Tarea 2 con Listas doblemente enlazadas
@@ -83,21 +93,23 @@ def tarea3_li()
 				tmpn = j.next
 				tmpj = j
 				tmpj
+			end
+		end
+	end
 end
-
 def tarea_ar()
-        liste = tarea1()
-        valor_energetico = []
-        gasto_energetico_total = []
-        for i in liste.length do
-                for j in liste.length-i-1
-                        if liste[i] < liste[i+1]
-                                tmp = liste[i+1]
-                                a[i+1] = a[i]
-                                a[i] = tmp
-                        end
-                end
-        end
+	liste = tarea1()
+	valor_energetico = []
+	gasto_energetico_total = []
+	for i in liste.length do
+		for j in liste.length-i-1
+			if liste[i] < liste[i+1]
+				tmp = liste[i+1]
+				a[i+1] = a[i]
+				a[i] = tmp
+			end
+		end
+	end
 end
 
 
@@ -120,8 +132,9 @@ def tarea3(b)
 end
 
 
+ar = tarea1()
+li = tarea2()
 
-
-
-
-
+puts ar
+ar.kcal_for
+puts ar

@@ -2,8 +2,6 @@
 # Contains all the tests
 # 
 # @author [roro]
-require 'coveralls'
-Coveralls.wear!
 
 RSpec.describe Prct06 do
 	it "has a version number" do
