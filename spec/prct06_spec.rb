@@ -354,11 +354,17 @@ RSpec.describe Prct06 do
 		it "If no one has eaten nothing, there always has to be to less energy" do
 			@diets.each { |x| expect(x.food_energy < x.gasto_energetico_total).to eq(true)}
 			end
-			for i in (0...3) do
+		it "Can do sports" do
+			for i in (0...4) do
 				@diet_rob.sport(i)
 			end
 			@diet_rob.sport(0)
+		end
 
+		it "Alalize should print a nice anallization" do
+			expect(@diet_rob.analize).to eq(nil)
+		end
+		
 		it "if they have eaten too much, there has to be too much energy" do
 			@diets.each do |i|
 				i.eat(@test1)
