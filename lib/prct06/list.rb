@@ -48,7 +48,7 @@ class Liste
 		@size += 1
 		return a.value.to_s
 	end
-	
+=begin
 	def pushb(obj)
 		a = Node.new(obj, @head, nil)
 		if size > 0
@@ -60,7 +60,7 @@ class Liste
 		@size += 1
 		return a.value.to_s
 	end
-
+=end
 	# 
 	# Pops the last Element of the list and prints it via the to_s method.
 	#

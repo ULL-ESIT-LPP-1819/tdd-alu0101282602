@@ -355,14 +355,21 @@ RSpec.describe Prct06 do
 			@diets.each { |x| expect(x.food_energy < x.gasto_energetico_total).to eq(true)}
 			end
 		it "Can do sports" do
-			for i in (0...4) do
+			for i in (0...5) do
 				@diet_rob.sport(i)
 			end
 			@diet_rob.sport(0)
 		end
 
 		it "Alalize should print a nice anallization" do
+			fe, ge = @diet_rob.food_energy, @diet_rob.gasto_energetico_total
+			@diet_rob.food_energy, @diet_rob.gasto_energetico_total = 0, 0
 			expect(@diet_rob.analize).to eq(nil)
+			@diet_rob.food_energy, @diet_rob.gasto_energetico_total = 1000, 0
+			expect(@diet_rob.analize).to eq(nil)
+			@diet_rob.food_energy, @diet_rob.gasto_energetico_total = fe, ge
+			expect(@diet_rob.analize).to eq(nil)
+			
 		end
 		
 		it "if they have eaten too much, there has to be too much energy" do
