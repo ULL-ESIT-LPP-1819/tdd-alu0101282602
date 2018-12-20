@@ -22,7 +22,7 @@ RSpec.describe "Benchmark" do
 		@test9 = Nutri.new("Ham-Burger", 9000, 157, 37, 457, 67, 37)
         @test10 = Nutri.new("Abacaxi", 10000, 3800, 48, 850, 48, 48)
         
-        # The menus
+		# The menus
         @menu1 = [@test1, @test1]
         @menu2 = [@test1, @test2]
         @menu3 = [@test2, @test3]
