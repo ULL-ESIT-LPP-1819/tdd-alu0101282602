@@ -80,7 +80,7 @@ class Liste
 		end
 		return a.to_s
 	end
-
+=begin
 	def popb()
 		if size > 0
 			a = @head.value
@@ -96,12 +96,14 @@ class Liste
 		end
 		return a.to_s
 	end
-
+=end
 	def pushn(ar)
 		ar.each do |i|
             push(i)
         end
 	end
+
+=begin
 	def pushbn(ar)
 		ar.each do |i|
             pushb(i)
@@ -117,6 +119,7 @@ class Liste
 			popb()
 		end
 	end
+=end
 
 	# Tarea 3 - for
 	def fors
