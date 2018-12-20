@@ -1,5 +1,5 @@
 # 
-# Diet Object to see if a persins gets enough nutrients
+# Diet Object to see if a person gets enough nutrients
 # 
 # @author roro
 # 

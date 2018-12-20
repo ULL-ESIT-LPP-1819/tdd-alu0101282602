@@ -60,84 +60,53 @@ RSpec.describe "Benchmark" do
         @diet8 = Diet.new(@dummy8)
         @diets = Liste.new()
         @diets.pushn([@diet_rob, @diet_julian, @diet1, @diet2, @diet3, @diet4, @diet5, @diet6, @diet7, @diet8])
-=begin
-	@pan = Etiqueta.new("Pan", true, 28, 15.0, 3.8, 1.8, 38.0, 2.5, 3.8, 0.4)
-	@queso = Etiqueta.new("Queso", true, 17, 15.0, 13.9, 8.1, 0.6, 0.6, 15.7, 3.15)
-	@leche = Etiqueta.new("Leche", true, 4, 197.25, 0.3, 0.2, 5.1, 5.1, 3.9, 0.15)
-	@chocolate_untar = Etiqueta.new("Chocolate de untar", true, 26, 15, 31.6, 11.0, 56.7, 56.8, 6, 0.114)
-	@galletas = Etiqueta.new("Galletas", true, 25, 8.0, 13.5, 6.2, 67.7, 1.4, 10, 1.3)
-	@sopa = Etiqueta.new("Sopa", true, 1, 14, 4.3, 1.6, 71.6, 37.3, 5.5, 1.5)
-	@salsa_tomate = Etiqueta.new("Salsa de Tomate", true, 39, 10, 3.9, 0.4, 9.8, 4.4, 1.3, 0.87)
-
-
-	@pc1 = Paciente.new("Juan", 20, 1, 60, 1.52, [60.0, 60.1], [80.0, 80.2], [17.4, 17.6, 17.5], [8.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 1 )
-	@pc2 = Paciente.new("Pepe", 50, 1, 58, 1.60, [60.0, 60.1], [80.0, 80.2], [17.4, 17.6, 17.5], [8.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 1 )
-	@pc3 = Paciente.new("Loli", 43, 0, 79, 1.80, [60.0, 60.1], [80.0, 80.2], [17.4, 17.6, 17.5], [8.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 4 )
-	@pc4 = Paciente.new("Carla", 36, 0, 67, 1.45, [60.0, 60.1], [80.0, 80.2], [17.4, 17.6, 17.5], [8.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 3 )
-	@pc5 = Paciente.new("Pedro", 60, 1, 50, 1.70, [60.0, 60.1], [80.0, 80.2], [17.4, 17.6, 17.5], [8.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 2 )
-	@pc6 = Paciente.new("Ana", 70, 0, 50, 1.70, [60.8, 60.1], [80.0, 80.2], [18.4, 17.6, 17.5], [9.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 2 )
-	@pc7 = Paciente.new("Paco", 50, 1, 50, 1.70, [60.0, 60.7], [80.0, 81.2], [17.4, 17.9, 17.5], [8.0, 9.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 2 )
-	@pc8 = Paciente.new("Mercedes", 60, 0, 50, 1.40, [61.0, 60.1], [90.0, 90.2], [18.4, 17.6, 17.5], [9.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 2 )
-	@pc9 = Paciente.new("Jesus", 75, 1, 50, 1.75, [71.0, 70.1], [90.0, 90.4], [17.4, 17.6, 17.5], [8.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 2 )
-	@pc10 = Paciente.new("Luis", 60, 1, 50, 1.80, [60.0, 60.1], [80.0, 80.2], [17.4, 17.6, 17.5], [8.0, 8.1, 8.0], [14.0, 13.9, 13.8], [17.5, 17.6, 17.4], [29.0, 28.9], 2 )
-
-	@menu1 = [@salsa_tomate, @pan]
-	@menu2 = [@galletas, @leche, @salsa_tomate]
-	@menu3 = [@sopa]
-	@menu4 = [@sopa, @queso, @salsa_tomate, @leche]
-	@menu5 = [@galletas, @chocolate_untar]
-	@menu6 = [@pan, @chocolate_untar]
-	@menu7 = [@sopa, @pan, @queso]
-	@menu8 = [@galletas, @sopa]
-	@menu9 = [@chocolate_untar, @queso]
-	@menu10 = [@salsa_tomate, @pan, @queso]
-	@menus = [@menu1, @menu2, @menu3, @menu4, @menu5, @menu6, @menu7, @menu8, @menu9, @menu10]
-	@pacientes = List.new
-	@pacientes.insert_n_to_head([@pc1, @pc2, @pc3, @pc4, @pc5, @pc6, @pc7, @pc8, @pc9, @pc10])
-=end
 	end
 
 	it "has a version number" do
 		expect(Prct06::VERSION).not_to be nil
 	end
 
+	it "does something useful" do
+		expect(true).to eq(true)
+	end
+
     describe "#Benchmark" do
-		it "ordenar lista con for" do
+		it "Sort DLL - for" do
 			expect(@diets.fors).to eq([@diet3, @diet6, @diet_julian, @diet_rob, @diet1, @diet4, @diet7, @diet2, @diet5, @diet8])
 		end
 
-		it "ordenar array con for" do
+		it "Sort Array - for" do
 			expect(@menus.fors).to eq([@menu1, @menu2, @menu3, @menu4, @menu5, @menu6, @menu7, @menu8, @menu9, @menu10])
 		end
 
-		it "ordenar lista con each" do
+		it "Sort DLL - each" do
 			expect(@diets.eachs).to eq([@diet3, @diet6, @diet_julian, @diet_rob, @diet1, @diet4, @diet7, @diet2, @diet5, @diet8])
 		end
 
-		it "ordenar array con each" do
+		it "Sort Array - each" do
 			expect(@menus.eachs).to eq([@menu1, @menu2, @menu3, @menu4, @menu5, @menu6, @menu7, @menu8, @menu9, @menu10])
 		end
 
-		it "ordenar lista con sort" do
+		it "Sort DLL - sort" do
 			expect(@diets.sort).to eq([@diet3, @diet6, @diet_julian, @diet_rob, @diet1, @diet4, @diet7, @diet2, @diet5, @diet8])
 		end
 
-		it "ordenar array con sort" do
-			@menus_kcal = @menus.map do |menu|
+		it "Sort Array - sort" do
+			@energy = @menus.map do |menu|
 				menu.each_helper
 			end
-			expect(@menus_kcal.sort).to eq([18844, 27798, 45836, 64028, 81984, 99798, 117856, 136070, 154234, 172310])
+			expect(@energy.sort).to eq([18844, 27798, 45836, 64028, 81984, 99798, 117856, 136070, 154234, 172310])
 		end
 
-		it "Benchmark" do
+		it "Time measuring" do
 			Benchmark.benchmark(CAPTION, 7, FORMAT, ">total:", ">avg:") do |x|
-				tfl = x.report("for list:")     { vec = @diets.fors }
-				tfa = x.report("for array:")    { vec2 = @menus.fors }
-				tel = x.report("each list:")    { vec3 = @diets.eachs }
-				tea = x.report("each array:")   { vec4 = @menus.eachs }
-				tsl = x.report("sort list:")    { vec5 = @diets.sort }
-				tsa = x.report("sort array:")   { vec6 = @menus.map{ |menu| menu.each_helper }.sort }
-				[tfl+tfa+tel+tea+tsl+tsa, (tfl+tfa+tel+tea+tsl+tsa)/6]
+				fDLL = x.report("for DLL:")     { vec = @diets.fors }
+				fA = x.report("for Ar:")    { vec2 = @menus.fors }
+				eDLL = x.report("each DLL:")    { vec3 = @diets.eachs }
+				eA = x.report("each Ar:")   { vec4 = @menus.eachs }
+				sDLL = x.report("sort DLL:")    { vec5 = @diets.sort }
+				sA = x.report("sort Ar:")   { vec6 = @menus.map{ |menu| menu.each_helper }.sort }
+				[fDLL+fA+eDLL+eA+sDLL+sA, (fDLL+fA+eDLL+eA+sDLL+sA)/6]
 			end
 		end
 	end
