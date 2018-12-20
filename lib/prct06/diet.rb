@@ -77,7 +77,6 @@ class Diet
 			puts "La cantidad de la alimentación no es suficiente para cubrir las exigencias calóricas del organismo.\nTomaste #{difference.round(2)}kcal/g muy poco."
 		elsif @food_energy > @gasto_energetico_total
 			puts "Ha consumido demasiado calóricas. No mantiene el equilibrio de su balance.\nTomaste #{difference.round(2)}kcal/g demasiado."
-		else puts "Strange ERROR"
 		end
 	end
 
