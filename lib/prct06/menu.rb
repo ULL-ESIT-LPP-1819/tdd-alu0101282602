@@ -1,14 +1,14 @@
 # 
-# Manages all the informations a normal etiquett contains.
+# Manages all the informations 
 # 
 # @author [roro]
 
 class Menu
-	attr_accessor :day, :title, :breakfast
+	attr_accessor :day, :title
 
 	def initialize(day, &block)
 		@day = day
-		#@title = title
+		@title = title
 		@breakfast, @lunch, @dinner = [], [], []
 		@table = [" ", "grasas carbohidratos", "proteínas", "fibra", "sal", "valor energético"]
 		@tot_energy = 0
