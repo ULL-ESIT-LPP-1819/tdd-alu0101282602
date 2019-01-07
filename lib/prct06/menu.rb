@@ -85,6 +85,11 @@ end
 
 menu = Menu.new("Lunes") do
 	titulo      "Bajo en calorías"
+end
+
+=begin
+menu = Menu.new("Lunes") do
+	titulo      "Bajo en calorías"
 	ingesta     :min => 30, :max => 35
 	desayuno    :descripcion => "Pan de trigo integral",
 				:porcion => "1 rodaja",
@@ -132,3 +137,5 @@ menu = Menu.new("Lunes") do
 				:sal => 0.13
 end
 puts menu.to_s
+=end
+

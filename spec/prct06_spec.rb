@@ -11,6 +11,56 @@ RSpec.describe Prct06 do
 	it "does something useful" do
 		expect(true).to eq(true)
 	end
+	before :all do
+		@menu = Menu.new("Lunes") do
+			titulo      "Bajo en calorías"
+			ingesta     :min => 30, :max => 35
+			desayuno    :descripcion => "Pan de trigo integral",
+						:porcion => "1 rodaja",
+						:gramos => 100,
+						:grasas => 3.3,
+						:carbohidratos => 54.0,
+						:proteinas => 11.0,
+						:fibra => 2.3,
+						:sal => 0.06
+			desayuno    :descripcion => "Actimel",
+						:porcion => "1 porción",
+						:gramos => 100,
+						:grasas =>  3.4,
+						:carbohidratos => 4.4,
+						:proteinas => 3.6,
+						:sal => 0.05
+			almuerzo    :descripcion =>  "Arroz",
+						:porcion => "1 taza",
+						:gramos => 100,
+						:grasas => 0.9,
+						:carbohidratos => 81.6,
+						:proteinas => 6.67,
+						:fibra => 1.4,
+						:sal => 0.04
+			almuerzo    :descripcion =>  "Lentejas",
+						:porcion => "1/2 cucharón",
+						:grasas => 0.4,
+						:carbohidratos => 20.0,
+						:proteinas => 9.0,
+						:fibra => 8.0,
+						:sal => 0.02
+			almuerzo    :descripcion => "Naranja",
+						:porcion => "1 pieza",
+						:gramos => 100,
+						:grasas =>  0.12,
+						:carbohidratos => 11.75,
+						:proteinas => 0.94,
+						:fibra => 2.4
+			cena        :descripcion => "Leche entera hacendado",
+						:porcion => "1 vaso",
+						:gramos => 100,
+						:grasas => 3.6,
+						:carbohidratos => 4.6,
+						:proteinas => 3.1,
+						:sal => 0.13
+		end
+	end
 
 	before :each do
 
@@ -412,4 +462,26 @@ RSpec.describe Prct06 do
 			expect(@energy.sort).to eq([18844, 27798, 45836, 64028, 81984, 99798, 117856, 136070, 154234, 172310])
 		end
 	end
+
+	describe "Menu" do
+		it "Shall print out in the right fornmat" do
+			expect(@menu.to_s).to eq("Lunes					Composición nutricional
+====================================================================================================
+			grasas	carbohidratos	proteínas	fibra	sal	valor energético
+Desayuno
+\"Pan de trigo integral\"	3.3	54.0		11.0		2.3	0.06	1225.3
+\"Actimel\"		3.4	4.4		3.6		0.0	0.05	259.65
+
+Almuerzo
+\"Arroz\"			0.9	81.6		6.67		1.4	0.04	1533.99
+\"Lentejas\"		0.4	20.0		9.0		8.0	0.02	507.9
+\"Naranja\"		0.12	11.75		0.94		2.4	0.0	220.05
+
+Cena
+\"Leche entera hacend..\"	3.6	4.6		3.1		0.0	0.13	263.75
+Valor energético total 4010.64")
+		 
+end
+	
+end
 end
