@@ -84,7 +84,6 @@ class Menu
 end
 
 menu = Menu.new("Lunes") do
-	titulo      "Bajo en calorías"
 end
 
 =begin
