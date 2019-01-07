@@ -107,6 +107,7 @@ RSpec.describe "Benchmark" do
 				sDLL = x.report("sort DLL:")    { vec5 = @diets.sort }
 				sA = x.report("sort Ar:")   { vec6 = @menus.map{ |menu| menu.each_helper }.sort }
 				[fDLL+fA+eDLL+eA+sDLL+sA, (fDLL+fA+eDLL+eA+sDLL+sA)/6]
+				
 			end
 		end
 	end
