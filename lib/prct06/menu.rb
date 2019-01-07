@@ -1,3 +1,8 @@
+# 
+# Manages all the informations a normal etiquett contains.
+# 
+# @author [roro]
+
 class Menu
 	attr_accessor :day, :title, :breakfast
 
