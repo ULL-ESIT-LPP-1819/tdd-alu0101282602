@@ -479,8 +479,7 @@ Almuerzo
 
 Cena
 \"Leche entera hacend..\"	3.6	4.6		3.1		0.0	0.13	263.75
-Valor energético total 4010.64")
-		 
+Valor energético total 4010.64") 
 end
 	
 end
